@@ -12,10 +12,5 @@ public class AppTest {
 	
 	
 	
-	@Test
-	public void test2() {
-		assert Boolean.TRUE;
-	}
-
 
 }
