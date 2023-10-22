@@ -13,4 +13,7 @@ public class AppTest {
 		assert Boolean.FALSE;
 	}
 
+	public void test3() {
+		assert Boolean.FALSE;
+	} 
 }
