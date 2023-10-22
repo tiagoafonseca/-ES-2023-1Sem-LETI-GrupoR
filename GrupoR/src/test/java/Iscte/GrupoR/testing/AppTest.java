@@ -8,5 +8,14 @@ public class AppTest {
 	public void test() {
 		assert Boolean.TRUE;
 	}
+	
+	
+	
+	
+	@Test
+	public void test2() {
+		assert Boolean.TRUE;
+	}
+
 
 }
