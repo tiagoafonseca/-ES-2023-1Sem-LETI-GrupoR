@@ -8,5 +8,9 @@ public class AppTest {
 	public void test() {
 		assert Boolean.TRUE;
 	}
-	
+
+	public void test2() {
+		assert Boolean.FALSE;
+	}
+
 }
