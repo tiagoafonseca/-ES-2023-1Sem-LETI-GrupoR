@@ -9,11 +9,4 @@ public class AppTest {
 		assert Boolean.TRUE;
 	}
 
-	public void test2() {
-		assert Boolean.FALSE;
-	}
-
-	public void test3() {
-		assert Boolean.FALSE;
-	} 
 }
