@@ -41,7 +41,7 @@ package Iscte.GrupoR;
 
 	                        for (String[] record : records) {
 	                            for (String field : record) {
-	                                System.out.print(field + " | ");
+	                                System.out.print(field);
 	                            }
 	                            System.out.println();
 	                        }
