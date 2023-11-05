@@ -50,6 +50,8 @@ package Iscte.GrupoR;
 	                    } catch (IOException ex) {
 	                        ex.printStackTrace();
 	                    }
+	                 // Fecha a janela após carregar o arquivo
+	                    frame.dispose();
 	                }
 	            }
 	        });
