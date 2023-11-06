@@ -34,11 +34,13 @@ public class OpenFileCSV {
                     try {
                         BufferedReader reader = new BufferedReader(new FileReader(selectedFile));
                         // Defina a ordem esperada das colunas
-                        String[] expectedColumns = {"Curso", "Unidade Curricular", "Turno", "Turma",
-                                "Inscritos no turno", "Dia da semana", "Hora de início da aula", "Hora de fim da aula",
-                                "Data da aula", "Características da sala de pedida para a aula",
-                                "Sala atribuída à aula"};
-
+                        String[] expectedColumns = {
+                        	    "Curso","Unidade Curricular"
+                        	    ,"Turno","Inscritos no turno"
+                        	    ,"Dia da semana","Hora inicio da aula",
+                        	    "Hora fim da aula","Data da aula" , "Caracteristicas da sala pedida para a aula",
+                        	    "Sala atribuida a aula"
+                        	};
                         String firstLine = reader.readLine();
                         if (firstLine != null) {
                             String[] actualColumns = firstLine.split("[,;]");
@@ -90,10 +92,6 @@ public class OpenFileCSV {
                         
                             frame.revalidate();
                         
-                            
-                           
-                        
-                            
                     }
 
                     } catch (IOException ex) {
@@ -102,7 +100,7 @@ public class OpenFileCSV {
                 }
 
                 // Fecha a janela após carregar o arquivo
-                frame.dispose();
+//                frame.dispose();
             }
         });
     
