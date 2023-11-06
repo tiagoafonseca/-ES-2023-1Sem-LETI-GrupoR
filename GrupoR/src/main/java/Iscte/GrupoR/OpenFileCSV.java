@@ -78,7 +78,23 @@ public class OpenFileCSV {
                             }
 
                             reader.close();
-                        }
+                            JButton openWebButton = new JButton("Abrir Tabela na Web");
+                            panel.add(openWebButton);
+
+                            openWebButton.addActionListener(new ActionListener() {
+                                @Override
+                                public void actionPerformed(ActionEvent e) {
+                                    openWebPageWithTable(orderedColumns, records);
+                                }
+                            });
+                        
+                            frame.revalidate();
+                        
+                            
+                           
+                        
+                            
+                    }
 
                     } catch (IOException ex) {
                         ex.printStackTrace();
@@ -89,7 +105,46 @@ public class OpenFileCSV {
                 frame.dispose();
             }
         });
+    
 
         frame.setVisible(true);
     }
+    private static void openWebPageWithTable(String[] columns, List<String[]> data) {
+        StringBuilder htmlContent = new StringBuilder();
+        htmlContent.append("<html><head><title>Tabela de Dados</title></head><body><table border='1'><tr>");
+        for (String column : columns) {
+            htmlContent.append("<th>").append(column).append("</th>");
+        }
+        htmlContent.append("</tr>");
+        for (String[] row : data) {
+            htmlContent.append("<tr>");
+            for (String cell : row) {
+                htmlContent.append("<td>").append(cell).append("</td>");
+            }
+            htmlContent.append("</tr>");
+        }
+        htmlContent.append("</table></body></html>");
+
+        try {
+            File tempHtmlFile = File.createTempFile("table", ".html");
+            PrintWriter writer = new PrintWriter(tempHtmlFile);
+            writer.write(htmlContent.toString());
+            writer.close();
+
+            Desktop.getDesktop().browse(tempHtmlFile.toURI());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
 }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
