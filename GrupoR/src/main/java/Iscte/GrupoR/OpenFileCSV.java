@@ -36,7 +36,7 @@ public class OpenFileCSV {
                         // Defina a ordem esperada das colunas
                         String[] expectedColumns = {
                         	    "Curso","Unidade Curricular"
-                        	    ,"Turno","Inscritos no turno"
+                        	    ,"Turno","Turma","Inscritos no turno"
                         	    ,"Dia da semana","Hora inicio da aula",
                         	    "Hora fim da aula","Data da aula" , "Caracteristicas da sala pedida para a aula",
                         	    "Sala atribuida a aula"
@@ -61,7 +61,7 @@ public class OpenFileCSV {
                             List<String[]> records = new ArrayList<>();
 
                             String line;
-                            int linesToRead = 5;
+                            int linesToRead = 50;
                             int currentLine = 0;
 
                             while ((line = reader.readLine()) != null && currentLine < linesToRead) {
@@ -80,6 +80,10 @@ public class OpenFileCSV {
                             }
 
                             reader.close();
+                            
+                         // Verifique a ordem das colunas na consola, atraves do usoda funcao da  classe columnOrderChecker
+                            ColumnOrderChecker.checkColumnOrder(records, expectedColumns);
+
                             JButton openWebButton = new JButton("Abrir Tabela na Web");
                             panel.add(openWebButton);
 
@@ -91,6 +95,7 @@ public class OpenFileCSV {
                             });
                         
                             frame.revalidate();
+                            
                         
                     }
 
