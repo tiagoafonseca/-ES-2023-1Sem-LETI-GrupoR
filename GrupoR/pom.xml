@@ -31,6 +31,14 @@
 			<version>${test.util.version}</version>
 			<scope>test</scope>
 		</dependency>
+		    <!-- Dependência para o JUnit 5, para que seja possivel criar o ficheiro provisorio para se testar -->
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-api</artifactId>
+        <version>5.8.1</version>
+        <scope>test</scope>
+    </dependency>
+
 	</dependencies>
 	
 	<build>
