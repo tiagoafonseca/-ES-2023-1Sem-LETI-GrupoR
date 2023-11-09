@@ -13,25 +13,30 @@ import java.util.Map;
 public class OpenFileCSV {
 
     public static void main(String[] args) {
+//    	Configuracao da janela 
         JFrame frame = new JFrame("Ler Arquivo CSV Manualmente");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1080, 720);
-
+//Painel e botão
         JPanel panel = new JPanel();
         frame.add(panel);
 
         JButton openButton = new JButton("Escolher Arquivo CSV");
         panel.add(openButton);
 
+//        Ação do botão
+        
         openButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+//            	Escolhere ficheiro, ver se é válido 
                 JFileChooser fileChooser = new JFileChooser();
                 int returnValue = fileChooser.showOpenDialog(null);
 
                 if (returnValue == JFileChooser.APPROVE_OPTION) {
                     File selectedFile = fileChooser.getSelectedFile();
                     try {
+//                    	Leitura do csv
                         BufferedReader reader = new BufferedReader(new FileReader(selectedFile));
                         // Defina a ordem esperada das colunas
                         String[] expectedColumns = {
