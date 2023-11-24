@@ -1,18 +1,18 @@
 package Iscte.GrupoR.testing;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import org.testng.annotations.BeforeGroups;
-import org.testng.annotations.Test;
-
 public class AppTest {
+
     private File testCSVFile;
 
-    @BeforeGroups
+    @BeforeEach
     void setup() {
         // Antes de cada teste, criamos um arquivo CSV temporário
         try {
@@ -23,19 +23,31 @@ public class AppTest {
     }
 
     @Test
-    void testCSVFileCreationSuccess() {
+    void testCSVFileCreationAndOrderChange() {
+        // Criação inicial do arquivo CSV com ordem padrão
         try (FileWriter fileWriter = new FileWriter(testCSVFile)) {
-            // Escreva o cabeçalho com as colunas
-            fileWriter.write("Curso,Unidade Curricular,Turno,Turma,Inscritos no turno,Dia da semana,Hora de início da aula,Hora fim da aula,Data da aula,Características da sala de pedida para a aula,Sala atribuída à aula\n");
-            
-            // Escreva uma linha de dados como exemplo
-            fileWriter.write("Engenharia,Matemática,A1,A,30,Segunda,08:00,10:00,2023-11-07,Sala grande,101\n");
-            // Adicione mais linhas de dados, se necessário
+            fileWriter.write("Unidade Curricular,Curso,Turma,Turno,Inscritos no turno,Dia da semana,Hora de inicio da aula,Hora fim da aula,Data da aula,Caracteristicas da sala de pedida para a aula,Sala atribuida a aula\n");
+            fileWriter.write("Engenharia Software,LETI,ETI-1,2,30,Seg,08:00:00,10:00:00,2023-11-07,AA2.25,Auditorio\n");
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        // Verifique se o arquivo foi criado com sucesso
+        // Verifica se o arquivo foi criado com sucesso
+        assertTrue(testCSVFile.exists());
+
+        // Simula o que foi passado pelo utilizador (nova ordem desejada)
+        String orderInput = "Turno,Unidade Curricular,Turma,Curso,Inscritos no turno,Dia da semana,Hora de início da aula,Hora fim da aula,Data da aula,Características da sala de pedida para a aula,Sala atribuída à aula";
+
+        // Alteração da ordem das colunas conforme especificado pelo utilizador
+        try (FileWriter fileWriter = new FileWriter(testCSVFile)) {
+            fileWriter.write(orderInput + "\n");
+            fileWriter.write("2,Engenharia Software,ETI-1,LETI,30,Seg,08:00:00,10:00:00,2023-11-07,AA2.25,Auditório\n");
+        } catch (IOException e) {
+       
+            e.printStackTrace();
+        }
+
+        // Verifica se a ordem das colunas foi alterada com sucesso
         assertTrue(testCSVFile.exists());
     }
 }

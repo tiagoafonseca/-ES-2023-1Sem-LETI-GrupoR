@@ -7,7 +7,12 @@ import java.io.*;
 import java.util.Arrays;
 
 public class GenerateHTML {
-    private static String[] expectedColumns = {
+	private File testCSVFile;  // Adicionado para armazenar o arquivo CSV selecionado para testes
+
+    public void setTestCSVFileForTesting(File file) {
+//        this.testCSVFile = file;
+    }
+    public static String[] expectedColumns = {
             "Curso", "Unidade Curricular", "Turno", "Turma", "Inscritos no turno",
             "Dia da semana", "Hora inicio da aula", "Hora fim da aula", "Data da aula",
             "Caracteristicas da sala pedida para a aula", "Sala atribuida a aula"
@@ -37,7 +42,7 @@ public class GenerateHTML {
         frame.setVisible(true);
     }
 
-    private static File chooseCSVFile() {
+    public static File chooseCSVFile() {
         JFileChooser fileChooser = new JFileChooser();
         int returnValue = fileChooser.showOpenDialog(null);
 
@@ -48,7 +53,7 @@ public class GenerateHTML {
         return null;
     }
 
-    private static void generateHTML(File file, String[] expectedColumns) {
+    public static void generateHTML(File file, String[] expectedColumns) {
         try (BufferedReader br = new BufferedReader(new FileReader(file));
              BufferedWriter bw = new BufferedWriter(new FileWriter("output.html"))) {
 
@@ -121,5 +126,6 @@ public class GenerateHTML {
             ex.printStackTrace();
         }
     }
+    
 }
 
