@@ -37,8 +37,27 @@ public class OpenFileCSV {
                 // Permitir que o usuário forneça a ordem desejada das colunas
                 File selectedFile = chooseCSVFile();
                 if (selectedFile != null) {
-                    // Chama o método readCSV com a ordem inicial das colunas
-                    readCSV(selectedFile, expectedColumns);
+                    // Mostra um diálogo de confirmação
+                    int option = JOptionPane.showConfirmDialog(null, "As colunas do arquivo são as esperadas?", "Confirmação", JOptionPane.YES_NO_OPTION);
+
+                    if (option == JOptionPane.YES_OPTION) {
+                        // As colunas são as esperadas, chama o método readCSV como antes
+                        readCSV(selectedFile, expectedColumns);
+                    } else {
+                        // As colunas não são as esperadas, solicita ao usuário a associação
+                        String orderInput = JOptionPane.showInputDialog("Digite a ordem desejada das colunas separadas por vírgulas:");
+
+                        if (orderInput != null && !orderInput.trim().isEmpty()) {
+                            // Atualizar a ordem esperada das colunas
+                            expectedColumns = orderInput.split(",");
+                            System.out.println("Nova ordem definida: " + Arrays.toString(expectedColumns));
+
+                            // Chama o método readCSV com a nova ordem definida
+                            readCSV(selectedFile, expectedColumns);
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Você não forneceu uma ordem de colunas válida.");
+                        }
+                    }
                 }
             }
         });
@@ -79,6 +98,7 @@ public class OpenFileCSV {
 
         return null;
     }
+
 
     private static void readCSV(File file, String[] expectedColumns) {
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
@@ -133,5 +153,6 @@ public class OpenFileCSV {
         }
     }
 }
+
 
 

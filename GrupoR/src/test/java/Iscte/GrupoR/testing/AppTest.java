@@ -1,18 +1,25 @@
 package Iscte.GrupoR.testing;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import Iscte.GrupoR.CompareCSVFiles;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.testng.annotations.BeforeGroups;
-import org.testng.annotations.Test;
 
 public class AppTest {
     private File testCSVFile;
 
-    @BeforeGroups
+    @BeforeEach
     void setup() {
         // Antes de cada teste, criamos um arquivo CSV temporário
         try {
@@ -38,4 +45,44 @@ public class AppTest {
         // Verifique se o arquivo foi criado com sucesso
         assertTrue(testCSVFile.exists());
     }
+    
+    
+    ///////
+    @Test
+    public void testGetColunasComX() {
+        // Crie uma instância de CompareCSVFiles
+        CompareCSVFiles comparer = new CompareCSVFiles();
+
+        // Mock dos dados para o segundo arquivo
+        List<String[]> secondFileData = new ArrayList<>();
+        secondFileData.add(new String[]{"Curso", "Sala", "Caracteristica1", "Caracteristica2", "X", "X"});
+        secondFileData.add(new String[]{"Informatica", "Sala1", "X", "-", "-", "X"});
+        secondFileData.add(new String[]{"Matematica", "Sala2", "-", "X", "-", "-"});
+
+        // Teste para uma sala existente
+        String result = CompareCSVFiles.getColunasComX(secondFileData, "Sala1");
+        assertEquals("Caracteristica1 ", result);
+
+        // Teste para uma sala inexistente
+        result = comparer.getColunasComX(secondFileData, "Sala3");
+        assertEquals("", result);
+    }
+
+    @Test
+    public void testTryParseInt() {
+        // Crie uma instância de CompareCSVFiles
+        CompareCSVFiles comparer = new CompareCSVFiles();
+
+        // Teste para um valor inteiro válido
+        int result = CompareCSVFiles.tryParseInt("123", 0);
+        assertEquals(123, result);
+
+        // Teste para um valor não inteiro
+        result = comparer.tryParseInt("abc", 456);
+        assertEquals(456, result);
+    }
 }
+
+
+    
+    
