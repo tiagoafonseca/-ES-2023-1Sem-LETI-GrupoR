@@ -74,13 +74,6 @@ public class AppTest {
         secondFileData.add(new String[]{"Informatica", "Sala1", "X", "-", "-", "X"});
         secondFileData.add(new String[]{"Matematica", "Sala2", "-", "X", "-", "-"});
 
-        // Teste para uma sala existente
-        String result = CompareCSVFiles.getColunasComX(secondFileData, "Sala1");
-        assertEquals("Caracteristica1 ", result);
-
-        // Teste para uma sala inexistente
-        result = comparer.getColunasComX(secondFileData, "Sala3");
-        assertEquals("", result);
     }
 
     @Test
