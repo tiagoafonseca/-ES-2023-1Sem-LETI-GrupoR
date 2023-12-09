@@ -103,4 +103,52 @@ public class CompareCSVFiles {
 		return colunasComX.toString().trim();
 	}
 
+	public static int compareInscritosLugares(String numeroInscritos, String numLugaresNormal) {
+		int inscritos = tryParseInt(numeroInscritos, 0);
+		int lugaresNormais = tryParseInt(numLugaresNormal, 0);
+
+		return (inscritos > lugaresNormais) ? 1 : 0;
+	}
+
+	public static List<String[]> readCSV(File file) {
+		List<String[]> data = new ArrayList<>();
+
+		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+			String line;
+
+			// Lê a linha de cabeçalho
+			line = br.readLine(); // Lê o cabeçalho
+			String[] header = line.split(";"); // Obtém os nomes das colunas
+			data.add(header);
+
+			// Lê as linhas do arquivo
+			while ((line = br.readLine()) != null) {
+				String[] values = line.split(";"); // Assumindo ponto e vírgula como delimitador
+				data.add(values);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return data;
+	}
+
+	public static File chooseCSVFile() {
+		JFileChooser fileChooser = new JFileChooser();
+		int returnValue = fileChooser.showOpenDialog(null);
+
+		if (returnValue == JFileChooser.APPROVE_OPTION) {
+			return fileChooser.getSelectedFile();
+		}
+
+		return null;
+	}
+
+	public static int tryParseInt(String value, int defaultValue) {
+		try {
+			return Integer.parseInt(value);
+		} catch (NumberFormatException e) {
+			return defaultValue;
+		}
+	}
 }
