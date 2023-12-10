@@ -1,7 +1,7 @@
 # Engenharia-Sow-ftware
 
 Projeto de Engenharia de Software
-- Autores do projeto: Tomas Pereira, Tiago Afonseca, Ricardo Minascurta, Rita Azevedo
+- Autores do projeto: Tomás Pereira, Tiago Afonseca, Ricardo Minascurta, Rita Azevedo
 - Este projeto tem por base a manipulação e apresentação de horários, (ficheiros CSV) foi desenvolvido em Java sendo complementado com utilização de bibliotecas Maven.
 - Tem por base uma interface simples (JFrame), com alguns botões e campos string de modo a ativar as funcionalidades referidas em baixo.
   
