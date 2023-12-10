@@ -148,17 +148,17 @@ class OpenFileCSVTest {
         // Obter a saída do sistema após a execução do método main
         String output = outContent.toString();
 
-        // Agora você pode verificar se a mensagem de erro é exibida corretamente na saída
+
         assertTrue(output.contains("O arquivo CSV não possui todas as colunas esperadas."));
     }
 
     @Test
     void testReadCSVWithMissingColumns() throws IOException {
-        // Criar arquivo CSV com colunas ausentes
+       
         File mockFile = createTestCsvWithMissingColumns();
         String[] expectedColumns = {"Coluna1", "Coluna2", "Coluna3"};
 
-        // Redefinir a saída padrão para capturar a saída do método
+     
         PrintStream originalOut = System.out;
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));

@@ -37,21 +37,21 @@ public class OpenFileCSV {
         JButton setOrderButton = new JButton("Definir Ordem Personalizada");
         panel.add(setOrderButton);
 
-        // Ação do botão para escolher o arquivo CSV
+   
         openButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Permitir que o usuário forneça a ordem desejada das colunas
+              
                 File selectedFile = chooseCSVFile();
                 if (selectedFile != null) {
-                    // Mostra um diálogo de confirmação
+                 
                     int option = JOptionPane.showConfirmDialog(null, "As colunas do arquivo são as esperadas?", "Confirmação", JOptionPane.YES_NO_OPTION);
 
                     if (option == JOptionPane.YES_OPTION) {
-                        // As colunas são as esperadas, chama o método readCSV como antes
+
                         readCSV(selectedFile, expectedColumns);
                     } else {
-                        // As colunas não são as esperadas, solicita ao usuário a associação
+                        
                         String orderInput = JOptionPane.showInputDialog("Digite a ordem desejada das colunas separadas por vírgulas:");
 
                         if (orderInput != null && !orderInput.trim().isEmpty()) {
@@ -73,17 +73,17 @@ public class OpenFileCSV {
         setOrderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Permitir que o usuário forneça a ordem desejada das colunas
+               
                 File selectedFile = chooseCSVFile();
                 if (selectedFile != null) {
                     String orderInput = JOptionPane.showInputDialog("Digite a ordem desejada das colunas separadas por vírgulas:");
 
                     if (orderInput != null && !orderInput.trim().isEmpty()) {
-                        // Atualizar a ordem esperada das colunas
+            
                         expectedColumns = orderInput.split(",");
                         System.out.println("Nova ordem definida: " + Arrays.toString(expectedColumns));
 
-                        // Chama o método readCSV com a nova ordem definida
+                   
                         readCSV(selectedFile, expectedColumns);
                     } else {
                         JOptionPane.showMessageDialog(null, "Você não forneceu uma ordem de colunas válida.");
@@ -115,32 +115,31 @@ public class OpenFileCSV {
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
 
-            // Lê a linha de cabeçalho
+       
             String header = br.readLine();
-            String[] columns = header.split(";"); // Usamos ponto e vírgula como delimitador
-
-            // Imprime as colunas esperadas e encontradas em um formato mais legível
+            String[] columns = header.split(";"); 
+           
             System.out.println("Colunas Esperadas: " + Arrays.toString(expectedColumns));
             System.out.println("Colunas Encontradas : " + Arrays.toString(columns));
 
-            // Verifica se as colunas esperadas estão presentes
+           
             if (!Arrays.asList(columns).containsAll(Arrays.asList(expectedColumns))) {
                 JOptionPane.showMessageDialog(null, "O arquivo CSV não possui todas as colunas esperadas.");
                 return;
             }
 
-            // Lê as linhas do arquivo
+            
             List<String[]> records = new java.util.ArrayList<>();
             while ((line = br.readLine()) != null) {
-                // Substitui as vírgulas dentro de aspas por um caractere temporário
+
                 line = line.replaceAll("\"([^\"]*)\"", "temporario");
-                // Substitui as vírgulas por ponto e vírgula e restaura as vírgulas dentro de aspas
+                
                 line = line.replace(";", ";").replace("temporario", ";");
 
-                // Divide a linha em colunas
-                String[] values = line.split(";"); // Usamos ponto e vírgula como delimitador
+                
+                String[] values = line.split(";"); 
 
-                // Processa as colunas de acordo com a ordem desejada
+
                 String[] orderedFields = new String[expectedColumns.length];
                 for (int i = 0; i < expectedColumns.length; i++) {
                     int columnIndex = Arrays.asList(columns).indexOf(expectedColumns[i]);
@@ -155,7 +154,7 @@ public class OpenFileCSV {
                 records.add(orderedFields);
             }
 
-            // Exibe os registros na ordem desejada
+           
             for (String[] record : records) {
                 System.out.println(Arrays.toString(record));
             }
@@ -167,6 +166,11 @@ public class OpenFileCSV {
 	public static Object showConfirmationDialog() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public void actionPerformed(Object object) {
+		// TODO Auto-generated method stub
+		
 	}
     
 	

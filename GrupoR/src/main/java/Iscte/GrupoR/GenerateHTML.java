@@ -15,7 +15,7 @@ public class GenerateHTML {
 	private File testCSVFile;  // Adicionado para armazenar o arquivo CSV selecionado para testes
 
     public void setTestCSVFileForTesting(File file) {
-//        this.testCSVFile = file;
+
     }
     public static String[] expectedColumns = {
             "Curso", "Unidade Curricular", "Turno", "Turma", "Inscritos no turno",
