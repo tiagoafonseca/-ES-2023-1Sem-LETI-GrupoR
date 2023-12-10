@@ -148,7 +148,7 @@ public class OpenFileCSV {
                         orderedFields[i] = values[columnIndex];
                     } else {
                         // Se a coluna não for encontrada, insira um valor padrão
-                        orderedFields[i] = "NA";
+//                        orderedFields[i] = "NA";
                     }
                 }
 
@@ -169,6 +169,7 @@ public class OpenFileCSV {
 		return null;
 	}
     
+	
    
 
 }

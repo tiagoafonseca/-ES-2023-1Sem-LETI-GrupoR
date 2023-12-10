@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<groupId>Iscte</groupId>
 	<artifactId>GrupoR</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-
 	<name>GrupoR</name>
 	<url>http://maven.apache.org</url>
-
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
@@ -17,7 +14,6 @@
 		<test.util.version>1.0.5</test.util.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -31,75 +27,10 @@
 			<version>${test.util.version}</version>
 			<scope>test</scope>
 		</dependency>
-		    <!-- Dependência para o JUnit 5, para que seja possivel criar o ficheiro provisorio para se testar -->
-    <dependency>
-        <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter-api</artifactId>
-        <version>5.8.1</version>
-        <scope>test</scope>
-    </dependency>
-
-	<dependency>
-	    <groupId>org.junit.platform</groupId>
-	    <artifactId>junit-platform-runner</artifactId>
-	    <version>1.10.1</version>
-	    <scope>test</scope>
-	</dependency>
-
-	<dependency>
-	    <groupId>org.jacoco</groupId>
-	    <artifactId>org.jacoco.agent</artifactId>
-	    <version>0.8.7</version>
-	    <scope>test</scope>
-	    <classifier>runtime</classifier>
-	</dependency>
-	
-	<dependency>
-	    <groupId>org.powermock</groupId>
-	    <artifactId>powermock-core</artifactId>
-	    <version>2.0.9</version>
-	    <scope>test</scope>
-	</dependency>
-	
- 	<dependency>
-	    <groupId>org.powermock</groupId>
-	    <artifactId>powermock-core</artifactId>
-	    <version>2.0.9</version>
-	    <scope>test</scope>
-	</dependency>
-	
-	<dependency>
-	    <groupId>org.powermock</groupId>
-	    <artifactId>powermock-module-junit4</artifactId>
-	    <version>2.0.9</version>
-	    <scope>test</scope>
-	</dependency>
-	
-	<dependency>
-        <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter-engine</artifactId>
-        <version>5.7.0</version>
-        <scope>test</scope>
-    </dependency>
-
-<dependency>
-        <groupId>org.assertj</groupId>
-        <artifactId>assertj-swing</artifactId>
-        <version>3.9.2</version>
-        <scope>test</scope>
-    </dependency>
-
-    <!-- Mockito -->
-    <dependency>
-        <groupId>org.mockito</groupId>
-        <artifactId>mockito-core</artifactId>
-        <version>3.11.2</version>
-        <scope>test</scope>
-    </dependency>
-
+		   
 
 	</dependencies>
-	
+
 	<build>
 		<plugins>
 			<plugin>
