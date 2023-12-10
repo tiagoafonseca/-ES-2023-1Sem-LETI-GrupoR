@@ -15,4 +15,4 @@ Projeto de Engenharia de Software
 
 - Manual de instruções: O seguinte link dar-lhe-á acesso a um documento para o ajudar a utilizar o nosso software
 
-https://iscteiul365-my.sharepoint.com/:w:/r/personal/tasaa_iscte-iul_pt/_layouts/15/Doc.aspx?sourcedoc=%7BED053B96-B683-4676-A118-1A835EC1944A%7D&file=Manual_de_intrucoes.docx&action=default&mobileredirect=true
+https://iscteiul365-my.sharepoint.com/:w:/g/personal/tasaa_iscte-iul_pt/EZY7Be2DtnZGoRgag17BlEoBXA8jUUuaO2aHoCRKZgiR1g?e=1UOmz9
