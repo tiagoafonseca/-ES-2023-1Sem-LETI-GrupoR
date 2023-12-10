@@ -7,9 +7,16 @@ import java.io.*;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * breve descricao da classe
+ * 
+ * @version 9/12/2023
+ * @author 
+ */
+
 public class OpenFileCSV {
 
-    private static String[] expectedColumns = {
+    public static String[] expectedColumns = {
             "Curso", "Unidade Curricular", "Turno", "Turma", "Inscritos no turno",
             "Dia da semana", "Hora inicio da aula", "Hora fim da aula", "Data da aula",
             "Caracteristicas da sala pedida para a aula", "Sala atribuida a aula"
@@ -88,7 +95,7 @@ public class OpenFileCSV {
         frame.setVisible(true);
     }
 
-    private static File chooseCSVFile() {
+    public static File chooseCSVFile() {
         JFileChooser fileChooser = new JFileChooser();
         int returnValue = fileChooser.showOpenDialog(null);
 
@@ -99,8 +106,12 @@ public class OpenFileCSV {
         return null;
     }
 
-
-    private static void readCSV(File file, String[] expectedColumns) {
+    /**
+     * 
+     * @param file
+     * @param expectedColumns
+     */
+    public static void readCSV(File file, String[] expectedColumns) {
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
 
@@ -152,6 +163,14 @@ public class OpenFileCSV {
             e.printStackTrace();
         }
     }
+
+	public static Object showConfirmationDialog() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+    
+   
+
 }
 
 

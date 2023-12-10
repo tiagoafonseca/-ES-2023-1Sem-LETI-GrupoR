@@ -6,6 +6,11 @@ import java.awt.event.*;
 import java.io.*;
 import java.util.Arrays;
 
+/**
+ * @version 9/12/2023
+ * @author 
+ */
+
 public class GenerateHTML {
 	private File testCSVFile;  // Adicionado para armazenar o arquivo CSV selecionado para testes
 
@@ -42,6 +47,10 @@ public class GenerateHTML {
         frame.setVisible(true);
     }
 
+   /**
+    * 
+    * @return
+    */
     public static File chooseCSVFile() {
         JFileChooser fileChooser = new JFileChooser();
         int returnValue = fileChooser.showOpenDialog(null);
@@ -53,6 +62,11 @@ public class GenerateHTML {
         return null;
     }
 
+    /**
+     * 
+     * @param file
+     * @param expectedColumns
+     */
     public static void generateHTML(File file, String[] expectedColumns) {
         try (BufferedReader br = new BufferedReader(new FileReader(file));
              BufferedWriter bw = new BufferedWriter(new FileWriter("output.html"))) {
@@ -107,7 +121,11 @@ public class GenerateHTML {
         }
     }
 
-    private static void createTempHtmlFile(String htmlContent) {
+   /**
+    * 
+    * @param htmlContent
+    */
+    public static void createTempHtmlFile(String htmlContent) {
         try {
             File htmlFile = new File("temp.html");
             FileWriter writer = new FileWriter(htmlFile);
@@ -118,7 +136,10 @@ public class GenerateHTML {
         }
     }
 
-    private static void openHtmlInBrowser() {
+    /**
+     * @return
+     */
+    public static void openHtmlInBrowser() {
         try {
             File htmlFile = new File("temp.html");
             Desktop.getDesktop().browse(htmlFile.toURI());
@@ -126,6 +147,13 @@ public class GenerateHTML {
             ex.printStackTrace();
         }
     }
+    
+    public JFileChooser createFileChooser() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
     
 }
 

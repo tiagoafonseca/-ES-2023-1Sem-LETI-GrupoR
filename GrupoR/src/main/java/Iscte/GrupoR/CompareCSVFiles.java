@@ -11,7 +11,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * breve descricao da classe
+ * 
+ * @version 10/12/2023
+ * @author Tiago Afonseca & Rita Azevedo
+ */
+
 public class CompareCSVFiles {
+	
+	/**
+	 * 
+	 * @param descricao do parametro
+	 */
 
 	public static void main(String[] args) {
 		File firstFile = chooseCSVFile();
@@ -75,7 +87,15 @@ public class CompareCSVFiles {
 			System.out.println(Arrays.toString(row));
 		}
 	}
-
+	
+	
+	/**
+	 * 
+	 * @param secondFileData
+	 * @param salaAtribuida
+	 * @param caracteristicaSalaPedida
+	 * @return
+	 */
 	public static String getColunasComX(List<String[]> secondFileData, String salaAtribuida,
 			String caracteristicaSalaPedida) {
 		StringBuilder colunasComX = new StringBuilder();
@@ -133,6 +153,10 @@ public class CompareCSVFiles {
 		return data;
 	}
 
+	/**
+	 * 
+	 * @return descricao do que a funcao retorna
+	 */
 	public static File chooseCSVFile() {
 		JFileChooser fileChooser = new JFileChooser();
 		int returnValue = fileChooser.showOpenDialog(null);
