@@ -8,10 +8,10 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * breve descricao da classe
+ * abertura do do ficheiro; alteracao da ordem das colunas; utilizador altera o nome das colunas; predfinicao de uma ordem personalizada para as colunas
  * 
  * @version 9/12/2023
- * @author 
+ * @author Ricardo Minascurta  Tomas Pereira Tiago Afonseca
  */
 
 public class OpenFileCSV {
@@ -22,6 +22,10 @@ public class OpenFileCSV {
             "Caracteristicas da sala pedida para a aula", "Sala atribuida a aula"
     };
 
+    /**
+     * parte grafica; alteracao da  ordem das colunas; alteracao do nome as colunas
+     * @param args
+     */
     public static void main(String[] args) {
         // Configuração da janela
         JFrame frame = new JFrame("Ler Arquivo CSV Manualmente");
@@ -107,9 +111,9 @@ public class OpenFileCSV {
     }
 
     /**
-     * 
-     * @param file
-     * @param expectedColumns
+     * leitura do ficheiro CSV; verificacao das colunas; substituicao das celulas em branco por NA
+     * @param file ficheiro escolhido pelo o user 
+     * @param expectedColumns ordem predefinida das colunas numa string
      */
     public static void readCSV(File file, String[] expectedColumns) {
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {

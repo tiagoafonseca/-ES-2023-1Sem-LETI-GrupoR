@@ -7,8 +7,9 @@ import java.io.*;
 import java.util.Arrays;
 
 /**
+ * Gerar uma pagina html a partir de um ficheiro CSV
  * @version 9/12/2023
- * @author 
+ * @author Tiago Afonseca
  */
 
 public class GenerateHTML {
@@ -23,6 +24,7 @@ public class GenerateHTML {
             "Caracteristicas da sala pedida para a aula", "Sala atribuida a aula"
     };
 
+    
     public static void main(String[] args) {
         JFrame frame = new JFrame("Gerar HTML a partir de Arquivo CSV");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,9 +65,9 @@ public class GenerateHTML {
     }
 
     /**
-     * 
-     * @param file
-     * @param expectedColumns
+     * Parte grafica para gerar o html
+     * @param file ficheiro escolhido pelo utilizador
+     * @param expectedColumns colunas na ordem predefinida para fazer a verificacao da ordem das colunas do ficheiro escolhido pelo o user 
      */
     public static void generateHTML(File file, String[] expectedColumns) {
         try (BufferedReader br = new BufferedReader(new FileReader(file));
@@ -121,10 +123,7 @@ public class GenerateHTML {
         }
     }
 
-   /**
-    * 
-    * @param htmlContent
-    */
+  
     public static void createTempHtmlFile(String htmlContent) {
         try {
             File htmlFile = new File("temp.html");
@@ -137,7 +136,8 @@ public class GenerateHTML {
     }
 
     /**
-     * @return
+     * abertura do ficheiro na pagina web
+     * @return pagina web
      */
     public static void openHtmlInBrowser() {
         try {

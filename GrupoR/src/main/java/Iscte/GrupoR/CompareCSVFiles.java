@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * breve descricao da classe
+ * comparacao entre dois ficheiros CSV passando algumas metricas;
  * 
  * @version 10/12/2023
  * @author Tiago Afonseca & Rita Azevedo
@@ -21,10 +21,8 @@ import java.util.Map;
 public class CompareCSVFiles {
 	
 	/**
-	 * 
-	 * @param descricao do parametro
+	 * @param selecao de ficheiros e escolha das colunas a utilizar na comparacao
 	 */
-
 	public static void main(String[] args) {
 		File firstFile = chooseCSVFile();
 		List<String[]> firstFileData = readCSV(firstFile);
@@ -90,11 +88,12 @@ public class CompareCSVFiles {
 	
 	
 	/**
+	 * percorrer o segundo ficheiro e a partir de uma certa coluna verifica que a celula tem valor x e em caso positivo adiciona a string
 	 * 
-	 * @param secondFileData
-	 * @param salaAtribuida
-	 * @param caracteristicaSalaPedida
-	 * @return
+	 * @param secondFileData dados do segundo ficheiro 
+	 * @param salaAtribuida sala presente no primeiro ficheiro usada  na comparacao
+	 * @param caracteristicaSalaPedida carateristica da sala do primeiro ficheiro
+	 * 
 	 */
 	public static String getColunasComX(List<String[]> secondFileData, String salaAtribuida,
 			String caracteristicaSalaPedida) {
@@ -123,6 +122,13 @@ public class CompareCSVFiles {
 		return colunasComX.toString().trim();
 	}
 
+	
+	/**
+	 * funcao que faz a comparacao entre o numero de inscritos entre os dois ficheiros
+	 * @param numeroInscritos string com o numero de inscritos
+	 * @param numLugaresNormal string com numero de lugares da sala
+	 * @return retorna 1 se o num de inscritos for maior que num de lugares e 0 caso contrario
+	 */
 	public static int compareInscritosLugares(String numeroInscritos, String numLugaresNormal) {
 		int inscritos = tryParseInt(numeroInscritos, 0);
 		int lugaresNormais = tryParseInt(numLugaresNormal, 0);
@@ -130,6 +136,11 @@ public class CompareCSVFiles {
 		return (inscritos > lugaresNormais) ? 1 : 0;
 	}
 
+	/**
+	 * leitura do ficheiro CSV
+	 * @param file ficheiro escolhido pelo utilizador
+	 * @return dados do ficheiro na forma de uma lista de strings
+	 */
 	public static List<String[]> readCSV(File file) {
 		List<String[]> data = new ArrayList<>();
 
@@ -153,10 +164,7 @@ public class CompareCSVFiles {
 		return data;
 	}
 
-	/**
-	 * 
-	 * @return descricao do que a funcao retorna
-	 */
+	
 	public static File chooseCSVFile() {
 		JFileChooser fileChooser = new JFileChooser();
 		int returnValue = fileChooser.showOpenDialog(null);

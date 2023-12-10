@@ -15,6 +15,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * varias metricas de comparacao entre os ficheiros de modo a establecer a qualidade de cada horario
+ * 
+ * @version 10/12/2023
+ * @author Tomas Pereira Rita Azevedo Tiago Afonseca
+ */
+
 public class Metricas extends JFrame {
 
     private JComboBox<String> firstColumnComboBox;
